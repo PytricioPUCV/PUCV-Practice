@@ -26,7 +26,8 @@ public class codigo_Libreria {
             System.out.println("1. Ingresar un libro");
             System.out.println("2. Buscar un libro");
             System.out.println("3. Eliminar un libro");
-            System.out.println("4. Salir");
+            System.out.println("4. Mostrar todos los libros ingresados");
+            System.out.println("5. Salir");
             System.out.println();
             System.out.print("Ingrese una opción: ");
             opcion = Integer.parseInt(user.readLine());
@@ -34,8 +35,7 @@ public class codigo_Libreria {
             switch (opcion) {
                 case 1:
                     if (PLibre < codigo.length) {
-
-                        /*  Solicitar los datos */
+                        /* Solicitar los datos */
                         System.out.println();
                         System.out.print("Ingrese el código del libro: ");
                         codigo_Libro = user.readLine();
@@ -54,8 +54,7 @@ public class codigo_Libreria {
 
                         /* Incrementar el índice de la primera posición libre */
                         PLibre++;
-                    } 
-                    else {
+                    } else {
                         System.out.println("No hay espacio disponible para ingresar más libros.");
                     }
                     break;
@@ -73,8 +72,8 @@ public class codigo_Libreria {
                                 System.out.println("Código: " + codigo[i] + ", Título: " + titulo[i] + ", Autor: " + autor[i] + ", Veces prestado: " + veces_prestado[i]);
                                 System.out.println();
                                 encontrado = true;
-                                System.out.println("Te gustaria tomar prestado este libro?");
-                                System.out.println("1. Si");
+                                System.out.println("¿Te gustaría tomar prestado este libro?");
+                                System.out.println("1. Sí");
                                 System.out.println("2. No");
                                 System.out.println();
                                 System.out.print("Ingrese una opción: ");
@@ -93,10 +92,8 @@ public class codigo_Libreria {
                         if (!encontrado) {
                             System.out.println();
                             System.out.println("No se encontró el libro.");
-                            
                         }
-                    } 
-                    else {
+                    } else {
                         System.out.println("No hay libros ingresados.");
                     }
                     break;
@@ -126,26 +123,30 @@ public class codigo_Libreria {
                             System.out.println();
                             System.out.println("No se encontró el libro.");
                         }
-                    } 
-                    else {
+                    } else {
                         System.out.println("No hay libros ingresados.");
                     }
                     break;
-                case 4:
-                    System.out.println("4. Salir");
-                    break;
-                case 5: {
+                case 4: 
                     /* Mostrar los datos ingresados */
+                    System.out.println();
                     System.out.println("Libros ingresados:");
+                    if (PLibre == 0) {
+                        System.out.println("No hay libros ingresados.");
+                        break;
+                    }
                     for (int i = 0; i < PLibre; i++) {
                         System.out.println("Código: " + codigo[i] + ", Título: " + titulo[i] + ", Autor: " + autor[i] + ", Veces prestado: " + veces_prestado[i]);
                     }
+                    break;
+                case 5:
+                    System.out.println("Salir");
                     break;
                 default:
                     System.out.println("Opción no válida");
                     break;
             }
-        } while (opcion != 4);
+        } while (opcion != 5);
 
     }
 }
