@@ -1,0 +1,165 @@
+Proyecto 1 Java:
+
+Datos requeridos:
+	Proyectos inmobiliarios: Identificador, Nombre, Ubicacion, Lista de Departamentos.
+		Ejemplo:
+			ID del Proyecto: 1
+			Nombre: "Edificio Aqua Reñaca"
+			Ubicación: "Av Edmundo Eluchans"
+			Lista de Departamentos:
+				Departamento 1: 2 habitaciones, 80 m², $150.000.000
+				Departamento 2: 3 habitaciones, 120 m², $220.000.000
+				Departamento 3: 1 habitación, 60 m², $100.000.000
+				
+		Codigo:
+				public class ProyectoInmobiliario {
+					private int idProyecto;
+					private String nombre;
+					private String ubicacion;
+					private List<Departamento> departamentos; // Lista de departamentos
+
+					// Constructor vacío (por defecto)
+					public ProyectoInmobiliario() {
+					}
+
+					// Constructor con parámetros
+					public ProyectoInmobiliario(int idProyecto, String nombre, String ubicacion, List<Departamento> departamentos) {
+						this.idProyecto = idProyecto;
+						this.nombre = nombre;
+						this.ubicacion = ubicacion;
+						this.departamentos = departamentos;
+					}
+
+					// Getter para idProyecto
+					public int getIdProyecto() {
+						return idProyecto;
+					}
+
+					// Setter para idProyecto
+					public void setIdProyecto(int idProyecto) {
+						this.idProyecto = idProyecto;
+					}
+
+					// Getter para nombre
+					public String getNombre() {
+						return nombre;
+					}
+
+					// Setter para nombre
+					public void setNombre(String nombre) {
+						this.nombre = nombre;
+					}
+
+					// Getter para ubicacion
+					public String getUbicacion() {
+						return ubicacion;
+					}
+
+					// Setter para ubicacion
+					public void setUbicacion(String ubicacion) {
+						this.ubicacion = ubicacion;
+					}
+
+					// Getter para departamentos
+					public List<Departamento> getDepartamentos() {
+						return departamentos;
+					}
+
+					// Setter para departamentos
+					public void setDepartamentos(List<Departamento> departamentos) {
+						this.departamentos = departamentos;
+					}
+				}
+					
+	Departamentos: Identificador, Numero de Habitaciones, Tamaño, espacio, Estado de Venta, Demanda.
+		Ejemplo:
+			ID del Departamento: 101
+			Número de Habitaciones: 3
+			Tamaño del Departamento: 120 m²
+			Precio: $250,000
+			Estado de Venta: Disponible
+			Demanda: 5 //Valor entre 0 y 10, 5 seria una demanda moderada.
+			
+			Codigo:
+				public class Departamento {
+					private int idDepartamento;  // ID único del departamento
+					private int numHabitaciones; // Número de habitaciones
+					private double tamaño;       // Tamaño en metros cuadrados
+					private double precio;       // Precio del departamento
+					private String estadoVenta;  // Estado de venta (Disponible, Vendido, Reservado)
+					private int demanda;         // Nivel de demanda
+					
+					// Constructor, getters y setters
+					public Departamento(int idDepartamento, int numHabitaciones, double tamaño, double precio, String estadoVenta, int demanda) {
+						this.idDepartamento = idDepartamento;
+						this.numHabitaciones = numHabitaciones;
+						this.tamaño = tamaño;
+						this.precio = precio;
+						this.estadoVenta = estadoVenta;
+						this.demanda = demanda;
+					}
+
+					// Métodos getters y setters
+					public int getIdDepartamento() { return idDepartamento; }
+					public void setIdDepartamento(int idDepartamento) { this.idDepartamento = idDepartamento; }
+
+					public int getNumHabitaciones() { return numHabitaciones; }
+					public void setNumHabitaciones(int numHabitaciones) { this.numHabitaciones = numHabitaciones; }
+
+					public double getTamaño() { return tamaño; }
+					public void setTamaño(double tamaño) { this.tamaño = tamaño; }
+
+					public double getPrecio() { return precio; }
+					public void setPrecio(double precio) { this.precio = precio; }
+
+					public String getEstadoVenta() { return estadoVenta; }
+					public void setEstadoVenta(String estadoVenta) { this.estadoVenta = estadoVenta; }
+
+					public int getDemanda() { return demanda; }
+					public void setDemanda(int demanda) { this.demanda = demanda; }
+				}
+	
+	Gestion de demandas: Historial de demanda por departamente, Precio basado en demanda
+		Ejemplo:
+			Id del departamento: 101
+			Historial de demandas: [3, 5, 7, 8, 6]
+			Demanda actual: 6
+			Factor de demanda: 1.2
+			
+			Codigo:
+				public class Demanda {
+					private int idDepartamento;
+					private List<Integer> historialDemanda;  // Historial de demanda
+					private double factorDemanda;  // Factor para ajustar el precio
+
+					// Constructor
+					public Demanda(int idDepartamento, List<Integer> historialDemanda, double factorDemanda) {
+						this.idDepartamento = idDepartamento;
+						this.historialDemanda = historialDemanda;
+						this.factorDemanda = factorDemanda;
+					}
+				    // Métodos getters y setters
+					public int getIdDepartamento() { return idDepartamento; }
+					public void setIdDepartamento(int idDepartamento) { this.idDepartamento = idDepartamento; }
+
+					public List<Integer> getHistorialDemanda() { return historialDemanda; }
+					public void setHistorialDemanda(List<Integer> historialDemanda) { this.historialDemanda = historialDemanda; }
+
+					public double getFactorDemanda() { return factorDemanda; }
+					public void setFactorDemanda(double factorDemanda) { this.factorDemanda = factorDemanda; }
+
+					// Método para calcular la demanda actual
+					public int getDemandaActual() {
+						return historialDemanda.get(historialDemanda.size() - 1); // Último valor en el historial
+					}
+
+					// Método para calcular el precio ajustado basado en la demanda
+					public double calcularPrecioAjustado(double precioBase) {
+						return precioBase * factorDemanda;
+					}
+
+					// Agregar un nuevo valor de demanda al historial
+					public void agregarDemanda(int nuevaDemanda) {
+						historialDemanda.add(nuevaDemanda);
+					}
+				}
