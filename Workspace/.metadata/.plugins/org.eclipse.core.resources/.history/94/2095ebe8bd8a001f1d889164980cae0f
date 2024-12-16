@@ -1,0 +1,147 @@
+package io.github.some_example_name;
+
+import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+
+public class Tarro {
+    // Atributos privados para garantizar el encapsulamiento
+    private Rectangle bucket;
+    private Texture bucketImage;
+    private TextureRegion[][] pirateRegions;
+    private Sound sonidoHerido;
+
+    private int vidas = 3;
+    private int puntos = 0;
+    private int velx = 280;
+    private boolean herido = false;
+    private final int tiempoHeridoMax = 50;
+    private int tiempoHerido;
+    private int direccion = 0;  // 0 = Frontal, 1 = Lado, 2 = Espalda
+    private int frameActual = 0;
+    private boolean flipX = false;
+
+    public Tarro(Texture tex, Sound ss) {
+        this.bucketImage = tex;
+        this.sonidoHerido = ss;
+        this.pirateRegions = TextureRegion.split(bucketImage, 32, 32);
+        this.bucket = new Rectangle();
+    }
+
+    public void crear() {
+        reiniciar();
+    }
+
+    // Dibuja el sprite en pantalla
+    public void dibujar(SpriteBatch batch) {
+        TextureRegion region = getCurrentSpriteRegion();
+        if (flipX) region.flip(true, false);
+        batch.draw(region, bucket.x, bucket.y + (herido ? MathUtils.random(-5, 5) : 0), 64, 64);
+    }
+
+    // Lógica de movimiento
+    public void actualizarMovimiento() {
+        if (herido) {
+            actualizarEstadoHerido();
+            return;
+        }
+        actualizarVelocidad();
+        procesarEntrada();
+    }
+
+    private void actualizarEstadoHerido() {
+        tiempoHerido--;
+        if (tiempoHerido <= 0) herido = false;
+    }
+
+    private void actualizarVelocidad() {
+        velx = (puntos >= 1000) ? 400 : 280;
+    }
+
+    // Procesa la entrada del jugador
+    private void procesarEntrada() {
+        boolean moving = false;
+
+        if (Gdx.input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.isKeyPressed(Input.Keys.A)) {
+            bucket.x -= velx * Gdx.graphics.getDeltaTime();
+            flipX = true;
+            moving = true;
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) || Gdx.input.isKeyPressed(Input.Keys.D)) {
+            bucket.x += velx * Gdx.graphics.getDeltaTime();
+            flipX = false;
+            moving = true;
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.UP) || Gdx.input.isKeyPressed(Input.Keys.W)) {
+            bucket.y += velx * Gdx.graphics.getDeltaTime();
+            moving = true;
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.DOWN) || Gdx.input.isKeyPressed(Input.Keys.S)) {
+            bucket.y -= velx * Gdx.graphics.getDeltaTime();
+            moving = true;
+        }
+
+        // Asegurar que el tarro no salga de los límites de la pantalla
+        bucket.x = MathUtils.clamp(bucket.x, 0, 800 - bucket.width);
+        bucket.y = MathUtils.clamp(bucket.y, 0, 600 - bucket.height);
+
+        // Actualizar la animación en función del movimiento
+        actualizarAnimacion(moving);
+    }
+
+    private void actualizarAnimacion(boolean moving) {
+        if (moving) {
+            direccion = (Gdx.input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.isKeyPressed(Input.Keys.RIGHT)) ? 1
+                       : (Gdx.input.isKeyPressed(Input.Keys.UP)) ? 2 : 0;
+            frameActual = (frameActual + 1) % 4;
+        } else {
+            direccion = 2;  // Espalda cuando está quieto
+            frameActual = 0;  // Frame de reposo
+        }
+    }
+
+    // Obtener la región de sprite actual
+    private TextureRegion getCurrentSpriteRegion() {
+        return pirateRegions[frameActual][direccion];
+    }
+
+    // Control de daño
+    public void dañar() {
+        if (vidas > 0) {
+            vidas--;
+            herido = true;
+            tiempoHerido = tiempoHeridoMax;
+            sonidoHerido.play();
+        }
+    }
+
+    // Getter y Setter para encapsulamiento
+    public int getVidas() { return vidas; }
+
+    public int getPuntos() { return puntos; }
+
+    public void sumarPuntos(int puntos) {
+        this.puntos += puntos;
+    }
+
+    public Rectangle getArea() { return bucket; }
+
+    public boolean estaHerido() { return herido; }
+
+    // Reiniciar el estado del tarro
+    public void reiniciar() {
+        vidas = 3;
+        puntos = 0;
+        bucket.set(800 / 2f - 64 / 2f, 20, 20, 20);
+    }
+
+    // Liberar recursos
+    public void destruir() {
+        bucketImage.dispose();
+    }
+}

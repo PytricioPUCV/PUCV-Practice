@@ -1,0 +1,118 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+h1 {
+    margin: 0;
+}
+
+.productos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.producto {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    width: 200px;
+    text-align: center;
+    margin: 10px;
+}
+
+.producto img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+.producto h2 {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.precio {
+    color: #555;
+    font-weight: bold;
+}
+
+.descuento {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+.ver-detalles {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.ver-detalles:hover {
+    background-color: #555;
+}
+
+.producto-detalle {
+    padding: 20px;
+    text-align: center;
+}
+
+.producto-detalle img {
+    max-width: 300px;
+    border-radius: 5px;
+}
+
+.volver {
+    display: block;
+    margin: 20px;
+    text-align: center;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.volver:hover {
+    background-color: #555;
+}
+
+.descuento {
+    color: black; 
+    font-weight: normal;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.signo {
+    font-weight: bold; 
+}
+
+
+.descuento-indicador {
+    background-color: #2ecc71; /* Verde */
+    color: white;
+    padding: 3px 3px;
+    border-radius: 15px;
+    font-size: 0.9em;
+    font-weight: normal;
+    display: inline-block;
+}

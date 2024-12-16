@@ -1,0 +1,12 @@
+#
+#Wed Oct 16 21:50:28 CLST 2024
+buildDir=build
+buildScriptPath=build.gradle
+classpath=<?xml version\="1.0" encoding\="UTF-8"?>\n<classpath>\n</classpath>\n
+derivedResources=.gradle;build;core/build;lwjgl3/build
+gradleVersion=8.10.1
+hasAutoBuildTasks=false
+linkedResources=
+managedBuilders=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><commands/>
+managedNatures=
+subprojectPaths=core;lwjgl3

@@ -1,0 +1,98 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+h1 {
+    margin: 0;
+}
+
+.producto-detalle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    max-width: 900px;
+    margin: 20px auto;
+}
+
+.imagen {
+    max-width: 40%;
+}
+
+.imagen img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.imagen .descripcion,
+.imagen .caracteristicas,
+.imagen .medidas {
+    text-align: left;
+    padding: 10px 0;
+}
+
+.detalle {
+    max-width: 50%;
+    text-align: left;
+}
+
+.detalle h2 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+.precio {
+    color: #555;
+    font-weight: bold;
+}
+
+.descuento {
+    color: black;
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+}
+
+.signo {
+    font-weight: bold;
+}
+
+.descuento-indicador {
+    background-color: #2ecc71; /* Verde */
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    margin-left: 10px;
+    font-size: 0.9em;
+    font-weight: normal;
+}
+
+.volver {
+    display: block;
+    margin: 20px;
+    text-align: center;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.volver:hover {
+    background-color: #555;
+}

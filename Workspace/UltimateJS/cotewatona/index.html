@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greenpymind</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos del body para fondo y márgenes */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0fee5;
+        }
+
+        /* Estilo del header para que ocupe toda la parte superior */
+        header {
+            background-color: #61bb1b;
+            padding: 20px 50px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            box-sizing: border-box;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            width: 50px;
+            height: auto;
+            margin-right: 10px;
+        }
+
+        .logo-text-img {
+            width: 150px;
+            height: auto;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .team-section {
+            padding-top: 100px;
+            text-align: center;
+            position: relative;
+        }
+
+        h2 {
+            display: inline-block;
+            background-color: #6a9c51;
+            color: white;
+            font-size: 36px;
+            font-weight: bold;
+            padding: 20px 40px;
+            border-radius: 35px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+        }
+
+        .leaf-img {
+            width: 450px;
+            height: auto;
+            position: absolute;
+            top: 50px;
+            right: 0;
+            z-index: 1500;
+            pointer-events: none;
+        }
+
+        .team-row {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .team-member {
+            background-color: #023101;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 250px;
+        }
+
+        .mauricio {
+            background-color: #023101;
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            background-color: #d3d3d3;
+            border-radius: 50%;
+            margin: 0 auto 10px;
+        }
+
+        .team-member p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="src/GreenPymind1.png" alt="Greenpymind Logo" class="logo-img">
+            <img src="src/GreenPymind2.png" alt="Greenpymind Text" class="logo-text-img">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Información</a></li>
+                <li><a href="#">Trivias</a></li>
+                <li><a href="#">Salón de la fama</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <img src="src/GreenLeaves.png" alt="Green Leaves" class="leaf-img">
+
+    <section class="team-section">
+        <h2>Team Greenpymind</h2>
+
+        <!-- Primera fila de miembros -->
+        <div class="team-row">
+            <div class="team-member mauricio">
+                <div class="avatar"></div>
+                <p><strong>Nombre:</strong> Mauricio Fernández</p>
+                <p><strong>Carrera:</strong> Ing. Civil Informática</p>
+                <p><strong>Universidad:</strong> Federico Santa María</p>
+            </div>
+
+            <div class="team-member">
+                <div class="avatar"></div>
+                <p><strong>Nombre:</strong> Sebastián Varas</p>
+                <p><strong>Carrera:</strong> Ing. Civil Informática</p>
+                <p><strong>Universidad:</strong> Federico Santa María</p>
+            </div>
+
+            <div class="team-member">
+                <div class="avatar"></div>
+                <p><strong>Nombre:</strong> Mariajose Lotina</p>
+                <p><strong>Carrera:</strong> Ing. Civil Informática</p>
+                <p><strong>Universidad:</strong> Federico Santa María</p>
+            </div>
+        </div>
+
+        <!-- Segunda fila de miembros -->
+        <div class="team-row">
+            <div class="team-member">
+                <div class="avatar"></div>
+                <p><strong>Nombre:</strong> Jorge Martínez</p>
+                <p><strong>Carrera:</strong> Ing. Civil Informática</p>
+                <p><strong>Universidad:</strong> Federico Santa María</p>
+            </div>
+
+            <div class="team-member">
+                <div class="avatar"></div>
+                <p><strong>Nombre:</strong> Marcos Cisterna</p>
+                <p><strong>Carrera:</strong> Ing. Civil Informática</p>
+                <p><strong>Universidad:</strong> Federico Santa María</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="scripts.js"></script>
+</body>
+
+</html>

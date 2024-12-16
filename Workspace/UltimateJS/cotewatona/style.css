@@ -1,0 +1,128 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0fee5; /* Fondo claro */
+    color: #006400;
+}
+
+/* Encabezado */
+header {
+    background-color: #60b847;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #e9f7e9;
+}
+
+/* Sección del equipo */
+.team-section {
+    text-align: center;
+    padding-top: 100px;
+    margin-top: 60px;
+}
+
+.team-section h2 {
+    margin-bottom: 30px;
+    font-size: 36px;
+    background-color: #88c057;
+    color: white;
+    display: inline-block;
+    padding: 10px 30px;
+    border-radius: 10px;
+}
+
+/* Grid del equipo */
+.team-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* Tres columnas */
+    grid-template-rows: 1fr 1fr; /* Dos filas */
+    gap: 20px;
+    padding: 20px;
+    justify-items: center; /* Centra horizontalmente cada miembro */
+    align-items: center; /* Centra verticalmente cada miembro */
+}
+
+/* Miembro específico del equipo */
+.team-member {
+    background-color: #023101;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%; /* Asegura que ocupen su columna */
+    max-width: 300px;
+    position: relative;
+}
+
+/* Ajuste especial para el quinto miembro (centrado en la segunda fila) */
+.team-member:nth-child(5) {
+    grid-column: 2 / 3; /* Centra al quinto miembro en la segunda fila */
+}
+
+/* Avatar de los miembros */
+.avatar {
+    width: 150px;
+    height: 150px;
+    background-color: #d3d3d3;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+    .team-grid {
+        grid-template-columns: 1fr 1fr; /* Dos columnas en pantallas medianas */
+        grid-template-rows: auto auto auto; /* Ajusta las filas dinámicamente */
+    }
+
+    .team-member:nth-child(5) {
+        grid-column: span 2; /* Ocupa las dos columnas en pantallas medianas */
+    }
+}
+
+@media (max-width: 480px) {
+    .team-grid {
+        grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
+    }
+}

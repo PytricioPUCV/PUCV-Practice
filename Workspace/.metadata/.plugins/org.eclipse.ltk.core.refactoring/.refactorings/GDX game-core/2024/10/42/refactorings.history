@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;GameLluvia.java&apos; to &apos;GDX game-core/src/main/java/io.github.some_example_name&apos;&#x0D;&#x0A;- Original project: &apos;GDX game-core&apos;&#x0D;&#x0A;- Destination element: &apos;GDX game-core/src/main/java/io.github.some_example_name&apos;&#x0D;&#x0A;- Original element: &apos;io.github.some_example_name.GameLluvia.java&apos;" description="Copy compilation unit" destination="/src\/main\/java=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/&lt;io.github.some_example_name" element1="/src\/main\/java=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/&lt;io.github.some_example_name{GameLluvia.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1728971582423" units="1" version="1.0"/>
+</session>
